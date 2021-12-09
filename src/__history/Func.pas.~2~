@@ -1,0 +1,12 @@
+unit Func;
+
+interface
+
+type
+  TFunc = class
+
+  end;
+
+implementation
+
+end.

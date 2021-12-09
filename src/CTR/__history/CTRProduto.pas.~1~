@@ -1,0 +1,74 @@
+Unit CTRProduto;
+
+interface
+
+  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, Produto, DAOproduto;
+
+  Type
+
+  TCTRProduto = Class
+  private
+    constructor Create; overload;
+  public
+    objDAOProduto : TDAOProduto;
+    destructor Destroy; override;
+
+    function inserir(produto : TProduto) : Boolean;
+    function atualizar(produto : TProduto) : Boolean;
+    function salvar(produto : TProduto) : Boolean;
+    function excluir(produto : TProduto) : Boolean;
+    function preencherEntidade(produto : TProduto) : Boolean;
+    procedure preencherDTO(Query: TDataSet; produto : TProduto);
+  end;
+
+
+implementation
+
+constructor TCTRProduto.Create;
+begin
+  objDAOproduto := TDAOProduto.Create;
+end;
+
+destructor TCTRProduto.Destroy;
+begin
+  FreeAndNil(objDAOProduto);
+  inherited;
+end;
+
+function TCTRProduto.inserir(produto : TProduto) : Boolean;
+begin
+  Result := objDAOProduto.inserir(dtoproduto);
+end;
+
+function TCTRProduto.atualizar(produto : TProduto) : Boolean;
+begin
+  Result := objDAOProduto.atualizar(dtoproduto);
+end;
+
+function TCTRProduto.salvar(produto : TProduto) : Boolean;
+begin
+  if dtoproduto.id = '' then
+    begin
+      Result := objDAOProduto.inserir(dtoproduto);
+    end
+  else
+    begin
+      Result := objDAOProduto.atualizar(dtoproduto);
+    end;
+end;
+
+function TCTRProduto.excluir(produto : TProduto) : Boolean;
+begin
+  Result := objDAOProduto.excluir(dtoproduto);
+end;
+
+function TCTRProduto.preencherEntidade(produto : TProduto) : Boolean;
+begin
+  Result := objDAOProduto.preencherEntidade(dtoproduto);
+end;
+
+procedure TCTRProduto.preencherDTO(Query:TDataSet; produto : Tproduto);
+begin
+  objDAOProduto.preencherDTO(Query, produto);
+end;
+end.

@@ -110,6 +110,19 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="src\Entidades\Cliente.pas"/>
+        <DCCReference Include="src\Entidades\Pedido.pas"/>
+        <DCCReference Include="src\Entidades\PedidoItem.pas"/>
+        <DCCReference Include="src\Entidades\Produto.pas"/>
+        <DCCReference Include="src\DAO\DAOCliente.pas"/>
+        <DCCReference Include="src\DAO\DAOPedido.pas"/>
+        <DCCReference Include="src\DAO\DAOPedidoItem.pas"/>
+        <DCCReference Include="src\DAO\DAOProduto.pas"/>
+        <DCCReference Include="src\CTR\CTRCliente.pas"/>
+        <DCCReference Include="src\CTR\CTRPedido.pas"/>
+        <DCCReference Include="src\CTR\CTRPedidoItem.pas"/>
+        <DCCReference Include="src\CTR\CTRProduto.pas"/>
+        <DCCReference Include="src\Func.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

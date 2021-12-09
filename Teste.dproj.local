@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2021/12/08 22:03:49.755,=D:\Projetos Delphi\Unit1.pas</Transaction>
-    <Transaction>2021/12/08 22:04:38.102,D:\teste-wk-delphi\Master.pas=D:\Projetos Delphi\Unit1.pas</Transaction>
-    <Transaction>2021/12/08 22:04:38.102,D:\teste-wk-delphi\Master.dfm=D:\Projetos Delphi\Unit1.dfm</Transaction>
-    <Transaction>2021/12/08 22:04:48.354,D:\teste-wk-delphi\Teste.dproj=D:\Projetos Delphi\Project1.dproj</Transaction>
-    <Transaction>2021/12/08 22:08:07.878,=D:\teste-wk-delphi\Unit1.pas</Transaction>
-    <Transaction>2021/12/08 22:08:30.966,D:\teste-wk-delphi\UDM.pas=D:\teste-wk-delphi\Unit1.pas</Transaction>
-    <Transaction>2021/12/08 22:08:30.966,D:\teste-wk-delphi\UDM.dfm=D:\teste-wk-delphi\Unit1.dfm</Transaction>
+	<Transactions>
+    <Transaction>2021/12/08 22:03:49.000.755,=D:\Projetos Delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:04:38.000.102,D:\Projetos Delphi\Unit1.pas=D:\teste-wk-delphi\Master.pas</Transaction>
+    <Transaction>2021/12/08 22:04:38.000.102,D:\Projetos Delphi\Unit1.dfm=D:\teste-wk-delphi\Master.dfm</Transaction>
+    <Transaction>2021/12/08 22:04:48.000.354,D:\Projetos Delphi\Project1.dproj=D:\teste-wk-delphi\Teste.dproj</Transaction>
+    <Transaction>2021/12/08 22:08:07.000.878,=D:\teste-wk-delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:08:30.000.966,D:\teste-wk-delphi\Unit1.pas=D:\teste-wk-delphi\UDM.pas</Transaction>
+    <Transaction>2021/12/08 22:08:30.000.966,D:\teste-wk-delphi\Unit1.dfm=D:\teste-wk-delphi\UDM.dfm</Transaction>
+    <Transaction>2021/12/09 15:51:12.105,=D:\teste-wk-delphi\src\Entidades\Cliente.pas</Transaction>
+    <Transaction>2021/12/09 15:51:12.124,=D:\teste-wk-delphi\src\Entidades\Pedido.pas</Transaction>
+    <Transaction>2021/12/09 15:51:12.140,=D:\teste-wk-delphi\src\Entidades\PedidoItem.pas</Transaction>
+    <Transaction>2021/12/09 15:51:12.154,=D:\teste-wk-delphi\src\Entidades\Produto.pas</Transaction>
+    <Transaction>2021/12/09 15:51:27.106,=D:\teste-wk-delphi\src\DAO\DAOCliente.pas</Transaction>
+    <Transaction>2021/12/09 15:51:27.141,=D:\teste-wk-delphi\src\DAO\DAOPedido.pas</Transaction>
+    <Transaction>2021/12/09 15:51:27.153,=D:\teste-wk-delphi\src\DAO\DAOPedidoItem.pas</Transaction>
+    <Transaction>2021/12/09 15:51:27.165,=D:\teste-wk-delphi\src\DAO\DAOProduto.pas</Transaction>
+    <Transaction>2021/12/09 15:51:50.022,=D:\teste-wk-delphi\src\CTR\CTRCliente.pas</Transaction>
+    <Transaction>2021/12/09 15:51:50.034,=D:\teste-wk-delphi\src\CTR\CTRPedido.pas</Transaction>
+    <Transaction>2021/12/09 15:51:50.047,=D:\teste-wk-delphi\src\CTR\CTRPedidoItem.pas</Transaction>
+    <Transaction>2021/12/09 15:51:50.064,=D:\teste-wk-delphi\src\CTR\CTRProduto.pas</Transaction>
+    <Transaction>2021/12/09 15:52:20.199,=D:\teste-wk-delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/09 15:52:57.311,D:\teste-wk-delphi\src\Func.pas=D:\teste-wk-delphi\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
