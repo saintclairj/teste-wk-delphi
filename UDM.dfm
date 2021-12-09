@@ -1,0 +1,24 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 364
+  Width = 508
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=wk'
+      'User_Name=root'
+      'Password=584584'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 176
+    Top = 96
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    Left = 280
+    Top = 104
+  end
+  object QAux: TFDQuery
+    Connection = Conexao
+    Left = 240
+    Top = 168
+  end
+end

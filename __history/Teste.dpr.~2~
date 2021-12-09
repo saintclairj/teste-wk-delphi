@@ -1,0 +1,14 @@
+program Teste;
+
+uses
+  Vcl.Forms,
+  Master in 'Master.pas' {frmMaster};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMaster, frmMaster);
+  Application.Run;
+end.

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2021/12/08 22:03:49.755,=D:\Projetos Delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:04:38.102,D:\teste-wk-delphi\Master.pas=D:\Projetos Delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:04:38.102,D:\teste-wk-delphi\Master.dfm=D:\Projetos Delphi\Unit1.dfm</Transaction>
+    <Transaction>2021/12/08 22:04:48.354,D:\teste-wk-delphi\Teste.dproj=D:\Projetos Delphi\Project1.dproj</Transaction>
+    <Transaction>2021/12/08 22:08:07.878,=D:\teste-wk-delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:08:30.966,D:\teste-wk-delphi\UDM.pas=D:\teste-wk-delphi\Unit1.pas</Transaction>
+    <Transaction>2021/12/08 22:08:30.966,D:\teste-wk-delphi\UDM.dfm=D:\teste-wk-delphi\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
