@@ -114,7 +114,15 @@ begin
       SQL.Add('FROM produto'); 
       SQL.Add('WHERE id = '+produto.id);
       Open;
-      preencherComDataSet(DM.QAux, produto);
+      if not IsEmpty then
+        begin
+          preencherComDataSet(DM.QAux, produto);
+        end
+      else
+        begin
+          produto.id := '';
+          Result := false;
+        end;
       Close;
 
     end;

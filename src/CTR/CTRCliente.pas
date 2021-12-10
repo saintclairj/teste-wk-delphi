@@ -2,7 +2,8 @@ Unit CTRCliente;
 
 interface
 
-  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, cliente, DAOCliente;
+  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, cliente, DAOCliente,
+  Firedac.Comp.Client;
 
   Type
 
@@ -19,6 +20,7 @@ interface
     function excluir(cliente : TCliente) : Boolean;
     function preencherEntidade(cliente : TCliente) : Boolean;
     procedure preencherComDataset(Query: TDataSet; cliente : TCliente);
+    procedure listarClientes(Query: TFDQuery);
   end;
 
 
@@ -38,6 +40,11 @@ end;
 function TCTRCliente.inserir(cliente : TCliente) : Boolean;
 begin
   Result := objDAOCliente.inserir(cliente);
+end;
+
+procedure TCTRCliente.listarClientes(Query: TFDQuery);
+begin
+  objDAOCliente.listarClientes(Query);
 end;
 
 function TCTRCliente.atualizar(cliente : TCliente) : Boolean;

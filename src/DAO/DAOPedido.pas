@@ -30,8 +30,13 @@ begin
         SQL.Add('INSERT INTO pedido(');
         SQL.Add('cliente_id,data_emissao,valor_total)');
         SQL.Add('VALUES (');
-        SQL.Add(TFunc.VazioNullString(Pedido.cliente_id)+','+TFunc.QuotedStr2(Pedido.data_emissao)+','+TFunc.QuotedStr2(Pedido.valor_total)+')');
+        SQL.Add(TFunc.VazioNullString(Pedido.cliente_id)+','+TFunc.DataParaBD(Pedido.data_emissao)+','+TFunc.DoubleParaBD(Pedido.valor_total)+')');
         ExecSQL;
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT LAST_INSERT_ID() cod;');
+        Open;
+        Pedido.id := FieldByName('cod').AsString;
         DM.Conexao.Commit;
       end;
   except
@@ -57,8 +62,8 @@ begin
       SQL.Clear;
       SQL.Add('UPDATE pedido SET');
       SQL.Add('id = ' + TFunc.VazioNullString(Pedido.id)+',');
-      SQL.Add('data_emissao = ' + TFunc.QuotedStr2(Pedido.data_emissao)+',');
-      SQL.Add('valor_total = ' + TFunc.QuotedStr2(Pedido.valor_total));
+      SQL.Add('data_emissao = ' +TFunc.DataParaBD(Pedido.data_emissao)+',');
+      SQL.Add('valor_total = ' + TFunc.DoubleParaBD(Pedido.valor_total));
 
       SQL.Add('WHERE id = ' + Pedido.id);
       ExecSQL;
@@ -82,14 +87,19 @@ begin
     Result := True;
     DM.Conexao.StartTransaction;
     with DM.QAux do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('DELETE FROM pedido');
-      SQL.Add('WHERE id = '+Pedido.id);
-      ExecSQL;
-      DM.Conexao.Commit;
-    end;
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('DELETE FROM pedido_item WHERE pedido_id = '+Pedido.id+';');
+        ExecSQL;
+        Close;
+        SQL.Clear;
+        SQL.Add('DELETE FROM pedido WHERE id = '+Pedido.id+';');
+        ExecSQL;
+
+
+        DM.Conexao.Commit;
+      end;
   except
     On erro:Exception do
     begin
@@ -116,7 +126,15 @@ begin
       SQL.Add('FROM pedido');
       SQL.Add('WHERE id = '+Pedido.id);
       Open;
-      preencherComDataSet(DM.QAux,Pedido);
+      if not IsEmpty then
+        begin
+          preencherComDataSet(DM.QAux,Pedido);
+        end
+      else
+        begin
+          Pedido.id := '';
+          Result := false;
+        end;
 
       Close;
 

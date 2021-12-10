@@ -2,7 +2,7 @@ Unit CTRPedidoItem;
 
 interface
 
-  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, PedidoItem, DAOPedidoItem;
+  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, PedidoItem, DAOPedidoItem,Datasnap.DBClient;
 
   Type
 
@@ -19,6 +19,8 @@ interface
     function excluir(pedidoItem: TPedidoItem) : Boolean;
     function preencherEntidade(pedidoItem: TPedidoItem) : Boolean;
     procedure preencherComDataset(Query: TDataSet; pedidoItem: TPedidoItem);
+    procedure listar(pedido_id: String; cds: TClientDataSet);
+
   end;
 
 
@@ -38,6 +40,11 @@ end;
 function TCTRPedidoItem.inserir(pedidoItem: TPedidoItem) : Boolean;
 begin
   Result := objDAOPedidoItem.inserir(pedidoItem);
+end;
+
+procedure TCTRPedidoItem.listar(pedido_id: String; cds: TClientDataSet);
+begin
+  objDAOPedidoItem.listar(pedido_id, cds);
 end;
 
 function TCTRPedidoItem.atualizar(pedidoItem: TPedidoItem) : Boolean;

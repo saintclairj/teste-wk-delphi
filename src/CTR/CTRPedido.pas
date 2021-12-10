@@ -64,7 +64,12 @@ end;
 
 function TCTRPedido.preencherEntidade(pedido : TPedido) : Boolean;
 begin
-  Result := objDAOPedido.preencherEntidade(pedido);
+  Result := false;
+  if pedido.id <> '' then
+    begin
+      Result := objDAOPedido.preencherEntidade(pedido);
+    end;
+
 end;
 
 procedure TCTRPedido.preencherComDataset(Query:TDataSet; pedido : TPedido);

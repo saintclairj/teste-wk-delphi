@@ -2,7 +2,7 @@ Unit DAOCliente;
 
 interface
 
-  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, UDM, Cliente, Func;
+  uses db, Dialogs, SysUtils, StdCtrls, Contnrs, Controls, UDM, Cliente, Func, Firedac.Comp.Client;
 
   Type
 
@@ -13,6 +13,7 @@ interface
     function excluir(cliente: TCliente) : Boolean;
     function preencherEntidade(cliente: TCliente) : Boolean;
     procedure preencherComDataSet(Query: TDataSet; cliente: TCliente);
+    procedure listarClientes(Query: TFDQuery);
   end;
 
 
@@ -45,6 +46,17 @@ begin
   end;
 end;
 
+
+procedure TDAOCliente.listarClientes(Query: TFDQuery);
+begin
+  with Query do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT * FROM cliente ORDER BY nome');
+      Open;
+    end;
+end;
 
 function TDAOCliente.atualizar(cliente: TCliente) : Boolean;
 begin

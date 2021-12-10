@@ -1,0 +1,160 @@
+unit Func;
+
+interface
+uses System.SysUtils, System.UITypes, Dialogs, Forms, StdCtrls;
+
+type
+  TFunc = class
+    public
+      class function QuotedStr2(s: String): String;
+      class function VazioNullString(s :String): String;
+      class function FormatarNumero(numero : Real; Decimais : Integer = 2; UsaMilhar : Boolean = False) : String; overload;
+      class function FormatarNumero(numero : String; Decimais : Integer = 2; UsaMilhar : Boolean = False) : String; overload;
+      class function MostrarMensagem(Caption, Texto: String; Tipo: Integer): TModalResult;
+    class function MostrarMensagemConfirmacao(Caption, Texto: String): TModalResult;
+    class function ConfirmarExclusao: Boolean;
+
+  end;
+
+implementation
+
+{ TFunc }
+
+class function TFunc.ConfirmarExclusao: Boolean;
+begin
+  Result:= TFunc.MostrarMensagemConfirmacao('Confirmar Exclusão','Deseja excluir?') = mrYes;
+end;
+
+class function TFunc.FormatarNumero(numero: String; Decimais: Integer;
+  UsaMilhar: Boolean): String;
+var
+  i : Integer;
+  fmt, dec : String;
+  num : Extended;
+begin
+  Result := '';
+  dec := '';
+
+  numero := StringReplace(numero, '.', '',[rfReplaceAll]);
+
+  if Decimais > 0 then dec := '.';
+  if numero = '' then numero := '0';
+
+  for i := 1 to Decimais do
+    begin
+      dec := dec + '0';
+    end;
+
+  if UsaMilhar then
+    fmt := '#,##0'+dec
+  else
+    fmt := '#0'+dec;
+
+  if TryStrToFloat(numero,num) then
+    begin
+      Result := FormatFloat(fmt,num);
+    end;
+end;
+
+class function TFunc.MostrarMensagem(Caption, Texto: String; Tipo: Integer): TModalResult;
+var
+  Msg: TForm;
+  MsgType: TMsgDlgType;
+  MsgBtns: TMsgDlgButtons;
+begin
+  try
+    case Tipo of
+      // Informação
+      0:
+        begin
+          MsgType := mtInformation;
+          MsgBtns := [TMsgDlgBtn.mbOK];
+        end;
+      // Atenção
+      1:
+        begin
+          MsgType := mtWarning;
+          MsgBtns := [TMsgDlgBtn.mbOK];
+        end;
+      // Confirmação Sim/Não
+      2:
+        begin
+          MsgType := mtConfirmation;
+          MsgBtns := [TMsgDlgBtn.mbYes,TMsgDlgBtn.mbNo];
+        end;
+      // Erro
+      3:
+        begin
+          MsgType := mtError;
+          MsgBtns := [TMsgDlgBtn.mbOK];
+        end;
+    end;
+
+    Msg := CreateMessageDialog(Texto, MsgType, MsgBtns);
+    Msg.Caption := Caption;
+
+    // Traduzindo Botões
+    (Msg.FindComponent('Yes') As TButton).Caption := 'Sim';
+    (Msg.FindComponent('No') As TButton).Caption := 'Não';
+
+
+
+    Msg.ShowModal;
+    Result := Msg.ModalResult;
+  finally
+    FreeAndNil(Msg);
+  end;
+end;
+
+class function TFunc.MostrarMensagemConfirmacao(Caption, Texto: String): TModalResult;
+begin
+  Result:= TFunc.MostrarMensagem(Caption, Texto,2);
+end;
+
+class function TFunc.FormatarNumero(numero: Real; Decimais: Integer;
+  UsaMilhar: Boolean): String;
+var
+  i : Integer;
+  fmt, dec : String;
+begin
+  Result := '';
+  dec := '';
+  if Decimais > 0 then dec := '.';
+  for i := 1 to Decimais do
+    begin
+      dec := dec + '0';
+    end;
+
+  if UsaMilhar then
+    fmt := '#,##0'+dec
+  else
+    fmt := '#0'+dec;
+
+  Result := FormatFloat(fmt,numero);
+end;
+
+class function TFunc.QuotedStr2(s: String): String;
+begin
+  if s = '' then
+    begin
+      Result:= 'null';
+    end
+  else if s <> 'NULL' then
+    begin
+      Result:= QuotedStr(s);
+    end
+  else
+    begin
+      Result := s;
+    end;
+end;
+
+class function TFunc.VazioNullString(s: String): String;
+begin
+  if s = '' then
+    Result := 'NULL'
+  else
+    Result := s;
+end;
+
+end.
